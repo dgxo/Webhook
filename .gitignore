@@ -1,0 +1,5 @@
+*.rbxm
+*.rbxmx
+sourcemap.json
+.DS_Store
+globalTypes.d.luau

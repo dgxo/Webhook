@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: CompeyDev/setup-rokit@v0.2.1
+
+      - name: Generate sourcemap
+        run: rojo sourcemap default.project.json --output sourcemap.json
+
+      - name: Download Roblox type definitions
+        run: curl -fsSL https://luau-lsp.pages.dev/globalTypes.None.d.luau -o globalTypes.d.luau
+
+      - name: Analyze
+        run: luau-lsp analyze --sourcemap=sourcemap.json --definitions=globalTypes.d.luau src
+
+      - name: Check formatting
+        run: stylua --check src
+
+      - name: Build
+        run: rojo build --output Webhook.rbxm
