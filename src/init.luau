@@ -1,4 +1,5 @@
 --!strict
+-- Webhook by dgox_xd - https://github.com/dgxo/Webhook
 -- Used to send Discord webhooks, replacing WebhookService with a nicer,
 -- builder interface. Supports everything you can do with a webhook, except
 -- uploading files (yet), and retries when rate limited (configurable).
