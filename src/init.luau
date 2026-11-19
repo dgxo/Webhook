@@ -313,6 +313,10 @@ const function postJson(url: string | Secret, payload: { [string]: any }): (bool
 	end)
 end
 
+--- Send the webhook to Discord.
+--- Returns success and an error message if failed.
+--- Such soft failures are: the webhook being disabled in the current runtime (see Config), HTTP errors, and server errors.
+--- Will error for invalid content; i.e. Content and Components being defined, missing IsComponentsV2 with Components or no URL.
 function Webhook.SendAsync(self: Webhook): (boolean, string?)
 	assert(
 		self.Content or (self.Components and #self.Components > 0) or (self.Embeds and #self.Embeds > 0) or self.Poll,
