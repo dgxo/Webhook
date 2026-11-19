@@ -227,6 +227,16 @@ function Webhook.AddEmbeds(self: Webhook, ...: Embed.Embed | { Embed.Embed })
 	return self
 end
 
+function Webhook.ClearComponents(self: Webhook)
+	table.clear(self.Components)
+	return self
+end
+
+function Webhook.ClearEmbeds(self: Webhook)
+	table.clear(self.Embeds)
+	return self
+end
+
 --- Returns whether the webhook can be sent and, if not, a human-readable reason
 --- The webhook's config may restrict it to Studio or a specific place/universe
 function Webhook.CanSend(self: Webhook): (boolean, string?)

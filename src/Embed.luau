@@ -124,6 +124,11 @@ function Embed.AddFields(self: Embed, ...: Field | { Field })
 	return self
 end
 
+function Embed.ClearFields(self: Embed)
+	table.clear(self.Fields)
+	return self
+end
+
 function Embed.ToTable(self: Embed)
 	const fields = {}
 	for _, field in self.Fields do
