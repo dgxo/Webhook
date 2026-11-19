@@ -7,7 +7,7 @@
 -- You need to firstly define URLs for your webhooks. Define them in the child
 -- Config module, along with any settings you'd like. It is heavily recommended
 -- to use Secrets for URLs, for security, but you can use strings.
--- About secrets: https://create.roblox.com/docs/cloud-services/secrets
+-- About secrets: https://create.roblox.com/docs/cloud-services/secrets.
 
 -- Example:
 --[[
@@ -125,7 +125,7 @@ type self = {
 
 export type Webhook = typeof(setmetatable({} :: self, Webhook))
 
--- Create a Webhook instance using a name as defined in Webhook/Config
+-- Create a Webhook instance using a name as defined in Webhook/Config.
 function module.new(name: WebhookName)
 	const config = Config.Webhooks[name]
 	assert(config, `Unknown webhook {name} - add it to Config`)
@@ -237,8 +237,8 @@ function Webhook.ClearEmbeds(self: Webhook)
 	return self
 end
 
---- Returns whether the webhook can be sent and, if not, a human-readable reason
---- The webhook's config may restrict it to Studio or a specific place/universe
+--- Returns whether the webhook can be sent and, if not, a human-readable reason.
+--- The webhook's config may restrict it to Studio or a specific place/universe.
 function Webhook.CanSend(self: Webhook): (boolean, string?)
 	if not self.Config.EnableInStudio and RunService:IsStudio() then
 		return false, "disabled in Studio"

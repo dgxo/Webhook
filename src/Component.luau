@@ -14,7 +14,7 @@ type self = {
 export type Component = typeof(setmetatable({} :: self, Component))
 
 --- Note that interactive components will fail to send in webhooks not owned by
---- an app
+--- an app.
 module.Type = {
 	ActionRow = 1,
 	Button = 2,
@@ -48,9 +48,9 @@ module.ButtonType = {
 	Premium = 6,
 }
 
---- Create a new Component for use in a webhook
---- <code>options</code> can be PascalCase or snake_case, it will be converted when sending
---- <code>components</code>, the children components, can be a Component or array of Components
+--- Create a new Component for use in a webhook:
+--- - <code>options</code> can be PascalCase or snake_case, it will be converted when sending
+--- - <code>components</code>, the children components, can be a Component or array of Components
 function module.new(componentType: number, options: { [string]: any }?, components: Component | { Component } | nil)
 	const self = setmetatable({
 		Type = componentType,
@@ -64,7 +64,7 @@ function module.new(componentType: number, options: { [string]: any }?, componen
 	return self
 end
 
---- Shorthand helper function to make a TextDisplay component
+--- Shorthand helper function to make a TextDisplay component.
 function module.textDisplay(content: string)
 	const self = setmetatable({
 		Type = module.Type.TextDisplay,
