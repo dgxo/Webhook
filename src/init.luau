@@ -217,7 +217,7 @@ end
 
 function Webhook.AddEmbeds(self: Webhook, ...: Embed.Embed | { Embed.Embed })
 	for _, embed in { ... } do
-		if typeof(embed) == "table" then
+		if getmetatable(embed :: any) then
 			self:AddEmbeds(embed)
 		else
 			table.insert(self.Embeds, embed :: Embed.Embed)
